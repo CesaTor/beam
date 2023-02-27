@@ -1,5 +1,6 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:beam/core/routes/app_router.gr.dart';
 import 'package:beam/home/home.dart';
-import 'package:beam/home/view/widgets/bottom_nav_bar.dart';
 import 'package:beam/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,26 +23,29 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    return Scaffold(
-      appBar: AppBar(title: Text(l10n.counterAppBarTitle)),
-      body: const Center(child: HomeText()),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.end,
-        children: [
-          FloatingActionButton(
-            onPressed: () => context.read<HomeCubit>().increment(),
-            child: const Icon(Icons.add),
-          ),
-          const SizedBox(height: 8),
-          FloatingActionButton(
-            onPressed: () => context.read<HomeCubit>().decrement(),
-            child: const Icon(Icons.remove),
-          ),
-        ],
-      ),
-      bottomNavigationBar: const HomeBottomNavBar(),
-    );
+
+    return AutoTabsRouter.pageView(
+        routes: const [ShowEventListRoute(), ShowFeedRoute()],
+        builder: (context, child, pageController) {
+          final tabsRouter = AutoTabsRouter.of(context);
+          return Scaffold(
+            body: child,
+            bottomNavigationBar: BottomNavigationBar(
+              currentIndex: tabsRouter.activeIndex,
+              onTap: tabsRouter.setActiveIndex,
+              items: const [
+                BottomNavigationBarItem(
+                  label: 'All Events',
+                  icon: Icon(Icons.airplane_ticket),
+                ),
+                BottomNavigationBarItem(
+                  label: 'Feed',
+                  icon: Icon(Icons.search),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
 
