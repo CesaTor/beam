@@ -10,8 +10,48 @@ class ShowEventListPage extends StatefulWidget {
 class _ShowEventListPageState extends State<ShowEventListPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Show Event List'),
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('Show Event List'),
+        ),
+        SizedBox(
+          height: 300,
+          child: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                leading: FlutterLogo(
+                  size: 50,
+                ),
+                title: const Text(
+                    'Title title title title title title title title title title'),
+                subtitle: const Text('Posizione - Luogo'),
+              ),
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: const Text('Show Event List'),
+        ),
+        SizedBox(
+          height: 300,
+          child: ListView.builder(
+            itemCount: 3,
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                leading: FlutterLogo(
+                  size: 50,
+                ),
+                title: Text('Title'),
+                subtitle: Text('subtitle'),
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

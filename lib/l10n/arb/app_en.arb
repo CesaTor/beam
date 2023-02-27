@@ -1,7 +1,11 @@
 {
     "@@locale": "en",
-    "counterAppBarTitle": "Counter",
-    "@counterAppBarTitle": {
-        "description": "Text shown in the AppBar of the Counter Page"
+    "homeNavFeedLabel": "Feed",
+    "@homeNavFeedLabel": {
+        "description": "Text shown in the TabBar of the Home Page"
+    },
+    "homeNavListLabel": "All Events",
+    "@homeNavListLabel": {
+        "description": "Text shown in the TabBar of the Home Page"
     }
 }
