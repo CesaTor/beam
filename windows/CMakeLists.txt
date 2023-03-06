@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
-project(feam LANGUAGES CXX)
+project(beam LANGUAGES CXX)
 
-set(BINARY_NAME "feam")
+set(BINARY_NAME "beam")
 
 cmake_policy(SET CMP0063 NEW)
 

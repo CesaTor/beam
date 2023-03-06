@@ -1,4 +1,4 @@
-package com.example.verygoodcore.feam
+package eu.torchia.beam
 
 import io.flutter.embedding.android.FlutterActivity
 
