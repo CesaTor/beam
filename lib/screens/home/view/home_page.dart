@@ -21,12 +21,18 @@ class HomeView extends StatelessWidget {
 
     return SafeArea(
       child: AutoTabsRouter.pageView(
-        routes: const [ShowEventListRoute(), ShowFeedRoute()],
+        routes: const [
+          EventListRoute(),
+          FeedRoute(),
+        ],
         builder: (context, child, pageController) {
           final tabsRouter = AutoTabsRouter.of(context);
+
           return Scaffold(
             body: child,
             bottomNavigationBar: BottomNavigationBar(
+              selectedItemColor: Theme.of(context).hintColor,
+              unselectedItemColor: Theme.of(context).disabledColor,
               currentIndex: tabsRouter.activeIndex,
               onTap: tabsRouter.setActiveIndex,
               items: [
@@ -34,10 +40,18 @@ class HomeView extends StatelessWidget {
                   label: l10n.homeNavListLabel,
                   icon: const Icon(Icons.airplane_ticket),
                 ),
+                // BottomNavigationBarItem(
+                //   label: l10n.homeNavSearchLabel,
+                //   icon: const Icon(Icons.search),
+                // ),
                 BottomNavigationBarItem(
                   label: l10n.homeNavFeedLabel,
-                  icon: const Icon(Icons.search),
+                  icon: const Icon(Icons.photo_camera_rounded),
                 ),
+                // BottomNavigationBarItem(
+                //   label: l10n.homeNavProfileLabel,
+                //   icon: const Icon(Icons.person),
+                // ),
               ],
             ),
           );
