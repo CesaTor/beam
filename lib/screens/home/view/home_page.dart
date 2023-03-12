@@ -25,36 +25,59 @@ class HomeView extends StatelessWidget {
         AutoTabsRouter.pageView(
       routes: const [
         EventListRoute(),
+        MapRoute(),
         FeedRoute(),
+        ProfileRoute(),
       ],
       builder: (context, child, pageController) {
         final tabsRouter = AutoTabsRouter.of(context);
 
         return Scaffold(
           body: child,
-          bottomNavigationBar: BottomNavigationBar(
-            selectedItemColor: Theme.of(context).hintColor,
-            unselectedItemColor: Theme.of(context).disabledColor,
-            currentIndex: tabsRouter.activeIndex,
-            onTap: tabsRouter.setActiveIndex,
-            items: [
-              BottomNavigationBarItem(
+          bottomNavigationBar: NavigationBar(
+            selectedIndex: tabsRouter.activeIndex,
+            onDestinationSelected: tabsRouter.setActiveIndex,
+            destinations: [
+              NavigationDestination(
+                icon: const Icon(Icons.home),
                 label: l10n.homeNavListLabel,
-                icon: const Icon(Icons.airplane_ticket),
               ),
-              // BottomNavigationBarItem(
-              //   label: l10n.homeNavSearchLabel,
-              //   icon: const Icon(Icons.search),
-              // ),
-              BottomNavigationBarItem(
-                label: l10n.homeNavFeedLabel,
-                icon: const Icon(Icons.photo_camera_rounded),
+              NavigationDestination(
+                icon: const Icon(Icons.location_on),
+                label: l10n.homeNavListLabel,
               ),
-              // BottomNavigationBarItem(
-              //   label: l10n.homeNavProfileLabel,
-              //   icon: const Icon(Icons.person),
-              // ),
+              NavigationDestination(
+                icon: const Icon(Icons.search),
+                label: l10n.homeNavListLabel,
+              ),
+              NavigationDestination(
+                icon: const Icon(Icons.person),
+                label: l10n.homeNavListLabel,
+              ),
             ],
+
+            // selectedItemColor: Theme.of(context).hintColor,
+            // unselectedItemColor: Theme.of(context).disabledColor,
+            // currentIndex: tabsRouter.activeIndex,
+            // onTap: tabsRouter.setActiveIndex,
+            // items: [
+            //   BottomNavigationBarItem(
+            //     label: l10n.homeNavListLabel,
+            //     icon: const Icon(Icons.airplane_ticket),
+            //   ),
+            //   // BottomNavigationBarItem(
+            //   //   label: l10n.homeNavSearchLabel,
+            //   //   icon: const Icon(Icons.search),
+            //   // ),
+            //   BottomNavigationBarItem(
+            //     label: l10n.homeNavFeedLabel,
+            //     icon: const Icon(Icons.photo_camera_rounded),
+            //   ),
+            //   // BottomNavigationBarItem(
+            //   //   label: l10n.homeNavProfileLabel,
+            //   //   icon: const Icon(Icons.person),
+            //   // ),
+            // ],
           ),
         );
       },

@@ -7,6 +7,7 @@ class EventListAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      automaticallyImplyLeading: false,
       floating: true,
       centerTitle: false,
       title: Text(
@@ -24,6 +25,7 @@ class EventListAppBar extends StatelessWidget {
         ),
       ],
       bottom: AppBar(
+        automaticallyImplyLeading: false,
         title: const Card(
           child: TextField(
             decoration: InputDecoration(

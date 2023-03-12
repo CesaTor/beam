@@ -25,7 +25,7 @@ class EventListTile extends StatelessWidget {
             topLeft: Radius.circular(10),
             bottomLeft: Radius.circular(10),
           ),
-          child: EventImage(eventUrl: event.cover),
+          child: EventImage(imgUrl: event.cover),
         ),
         title: Text(
           event.title,

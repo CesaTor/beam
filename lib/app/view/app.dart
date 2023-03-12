@@ -36,6 +36,7 @@ class App extends StatelessWidget {
         routerDelegate: router.delegate(),
         routeInformationParser: router.defaultRouteParser(),
         backButtonDispatcher: RootBackButtonDispatcher(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }

@@ -11,77 +11,112 @@
 // ignore_for_file: type=lint
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 
-import '../../screens/event/view/event_page.dart' as _i2;
-import '../../screens/event_list/event_list.dart' as _i4;
-import '../../screens/feed/feed.dart' as _i3;
-import '../../screens/home/view/home_page.dart' as _i1;
+import '../../screens/event/view/event_page.dart' as _i3;
+import '../../screens/event_list/event_list.dart' as _i6;
+import '../../screens/feed/feed.dart' as _i4;
+import '../../screens/home/view/home_page.dart' as _i2;
+import '../../screens/login/view/login_page.dart' as _i1;
+import '../../screens/map/view/map_page.dart' as _i5;
+import '../../screens/profile/profile.dart' as _i7;
 
-class AppRouter extends _i5.RootStackRouter {
-  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
-    HomeRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+  final Map<String, _i8.PageFactory> pagesMap = {
+    LoginRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.HomePage(),
+        child: const _i1.LoginPage(),
+      );
+    },
+    HomeRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i2.HomePage(),
       );
     },
     EventRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
       final args = routeData.argsAs<EventRouteArgs>(
           orElse: () => EventRouteArgs(eventId: pathParams.getString('id')));
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: _i2.EventPage(
+        child: _i3.EventPage(
           eventId: args.eventId,
           key: args.key,
         ),
       );
     },
     FeedRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.FeedPage(),
+        child: const _i4.FeedPage(),
+      );
+    },
+    MapRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i5.MapPage(),
       );
     },
     EventListRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.EventListPage(),
+        child: const _i6.EventListPage(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const _i7.ProfilePage(),
       );
     },
   };
 
   @override
-  List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig(
-          HomeRoute.name,
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig(
+          LoginRoute.name,
           path: '/',
+        ),
+        _i8.RouteConfig(
+          HomeRoute.name,
+          path: '/home',
           children: [
-            _i5.RouteConfig(
+            _i8.RouteConfig(
               FeedRoute.name,
               path: 'feed',
               parent: HomeRoute.name,
             ),
-            _i5.RouteConfig(
+            _i8.RouteConfig(
+              MapRoute.name,
+              path: 'map',
+              parent: HomeRoute.name,
+            ),
+            _i8.RouteConfig(
               EventListRoute.name,
               path: 'list',
               parent: HomeRoute.name,
             ),
+            _i8.RouteConfig(
+              ProfileRoute.name,
+              path: 'profile',
+              parent: HomeRoute.name,
+            ),
           ],
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           '/event#redirect',
           path: '/event',
           redirectTo: '/',
           fullMatch: true,
         ),
-        _i5.RouteConfig(
+        _i8.RouteConfig(
           EventRoute.name,
           path: '/event:id',
         ),
@@ -89,12 +124,24 @@ class AppRouter extends _i5.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i5.PageRouteInfo<void> {
-  const HomeRoute({List<_i5.PageRouteInfo>? children})
+/// [_i1.LoginPage]
+class LoginRoute extends _i8.PageRouteInfo<void> {
+  const LoginRoute()
+      : super(
+          LoginRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'LoginRoute';
+}
+
+/// generated route for
+/// [_i2.HomePage]
+class HomeRoute extends _i8.PageRouteInfo<void> {
+  const HomeRoute({List<_i8.PageRouteInfo>? children})
       : super(
           HomeRoute.name,
-          path: '/',
+          path: '/home',
           initialChildren: children,
         );
 
@@ -102,11 +149,11 @@ class HomeRoute extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.EventPage]
-class EventRoute extends _i5.PageRouteInfo<EventRouteArgs> {
+/// [_i3.EventPage]
+class EventRoute extends _i8.PageRouteInfo<EventRouteArgs> {
   EventRoute({
     required String eventId,
-    _i6.Key? key,
+    _i9.Key? key,
   }) : super(
           EventRoute.name,
           path: '/event:id',
@@ -128,7 +175,7 @@ class EventRouteArgs {
 
   final String eventId;
 
-  final _i6.Key? key;
+  final _i9.Key? key;
 
   @override
   String toString() {
@@ -137,8 +184,8 @@ class EventRouteArgs {
 }
 
 /// generated route for
-/// [_i3.FeedPage]
-class FeedRoute extends _i5.PageRouteInfo<void> {
+/// [_i4.FeedPage]
+class FeedRoute extends _i8.PageRouteInfo<void> {
   const FeedRoute()
       : super(
           FeedRoute.name,
@@ -149,8 +196,20 @@ class FeedRoute extends _i5.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i4.EventListPage]
-class EventListRoute extends _i5.PageRouteInfo<void> {
+/// [_i5.MapPage]
+class MapRoute extends _i8.PageRouteInfo<void> {
+  const MapRoute()
+      : super(
+          MapRoute.name,
+          path: 'map',
+        );
+
+  static const String name = 'MapRoute';
+}
+
+/// generated route for
+/// [_i6.EventListPage]
+class EventListRoute extends _i8.PageRouteInfo<void> {
   const EventListRoute()
       : super(
           EventListRoute.name,
@@ -158,4 +217,16 @@ class EventListRoute extends _i5.PageRouteInfo<void> {
         );
 
   static const String name = 'EventListRoute';
+}
+
+/// generated route for
+/// [_i7.ProfilePage]
+class ProfileRoute extends _i8.PageRouteInfo<void> {
+  const ProfileRoute()
+      : super(
+          ProfileRoute.name,
+          path: 'profile',
+        );
+
+  static const String name = 'ProfileRoute';
 }

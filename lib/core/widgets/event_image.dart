@@ -2,15 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class EventImage extends StatelessWidget {
-  const EventImage({required this.eventUrl, this.size = 100, super.key});
+  const EventImage({required this.imgUrl, this.size = 100, super.key});
 
-  final String eventUrl;
+  final String imgUrl;
   final double size;
 
   @override
   Widget build(BuildContext context) {
     return CachedNetworkImage(
-      imageUrl: eventUrl,
+      imageUrl: imgUrl,
       width: size,
       placeholder: (context, url) =>
           const Center(child: CircularProgressIndicator()),

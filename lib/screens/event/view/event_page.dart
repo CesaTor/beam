@@ -171,8 +171,14 @@ class EventView extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Text('30\€\ncad', style: GoogleFonts.robotoMono(),),
-            ElevatedButton(onPressed: () {}, child: Text('Compra biglietto')),
+            Text(
+              '30€\ncad',
+              style: GoogleFonts.robotoMono(),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Compra biglietto'),
+            ),
           ],
         ),
       ),
